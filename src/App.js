@@ -22,7 +22,7 @@ function App() {
         <Routes>
           {
             routes
-              .map(({ path, element }) => <Route path={path} element={element} />)
+              .map(({ path, element }) => <Route path={path} element={element} key={path} />)
           }
         </Routes>
       </div>
