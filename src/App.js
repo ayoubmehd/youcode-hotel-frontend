@@ -1,5 +1,8 @@
+import { Routes, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
+
+import routes from "./routes";
 
 function App() {
   return (
@@ -9,15 +12,20 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <nav>
+          <Link to="/">Home</Link>
+          {' '}
+          <Link to="/about">About</Link>
+        </nav>
       </header>
+      <div>
+        <Routes>
+          {
+            routes
+              .map(({ path, element }) => <Route path={path} element={element} />)
+          }
+        </Routes>
+      </div>
     </div>
   );
 }
