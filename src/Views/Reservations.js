@@ -24,11 +24,12 @@ const headings = [
 
 
 function Reservations() {
+
     return (
         <div className="container m-auto px-8">
             <div className="flex justify-between mb-3">
                 <h1 className="text-2xl font-bold">Reservations</h1>
-                <AppButton>
+                <AppButton type="link" to="/reservations/new">
                     <span>
                         New Reservation
                     </span>
