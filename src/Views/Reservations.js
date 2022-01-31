@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import findById from "../APIs/orders/findById";
 import getAll from "../APIs/orders/getAll";
+import destroy from "../APIs/orders/destroy";
 import AppButton from "../Components/AppButton";
 import AppTable, { AppTBody, AppTr, AppTd } from "../Components/AppTable";
 
@@ -60,10 +61,15 @@ function Reservations() {
     setReservations([...reservations]);
   }
 
+  function remove(id) {
+    destroy(id).then(([err, res]) => {
+      getReservations();
+    });
+  }
+
   //
   function Expantion({ expand }) {
     if (expand) {
-      console.log(expand);
       return (
         <AppTr>
           <AppTd colspan={headings.length}>
@@ -113,7 +119,10 @@ function Reservations() {
                       >
                         Edit
                       </Link>
-                      <button className="mx-1 text-red-500 font-bold">
+                      <button
+                        onClick={() => remove(reservation._id)}
+                        className="mx-1 text-red-500 font-bold"
+                      >
                         Delete
                       </button>
                       <button
