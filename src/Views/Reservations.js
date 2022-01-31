@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import findById from "../APIs/orders/findById";
 import getAll from "../APIs/orders/getAll";
 import AppButton from "../Components/AppButton";
@@ -28,13 +28,11 @@ function Reservations() {
   const [reservations, setReservations] = useState([]);
   const [nextPage, setNextPage] = useState(0);
   const [prevPage, setPrevPage] = useState(0);
-  const [page, setPage] = useState(1);
+  const [params, setParams] = useSearchParams({ page: 1 });
+  const [page, setPage] = useState(params.get("page"));
 
   useEffect(() => {
-    getReservations();
-  }, []);
-
-  useEffect(() => {
+    setParams({ page });
     getReservations();
   }, [page]);
 
@@ -94,7 +92,7 @@ function Reservations() {
     <div className="container m-auto">
       <div className="flex justify-between mb-3">
         <h1 className="text-2xl font-bold">Reservations</h1>
-        <AppButton type="link" to="/reservations/new">
+        <AppButton type="link" attr={{ to: "/reservations/new" }}>
           <span>New Reservation</span>
         </AppButton>
       </div>
@@ -143,14 +141,18 @@ function Reservations() {
       </AppTable>
       <div className="flex justify-center py-4">
         <AppButton
-          onClick={() => prev()}
-          className={`mx-2 ${!prevPage ? "bg-gray-500" : ""}`}
+          attr={{
+            className: `mx-2 ${!prevPage ? "bg-gray-500" : ""}`,
+            onClick: () => prev(),
+          }}
         >
           &lt;&lt; Prev
         </AppButton>
         <AppButton
-          onClick={() => next()}
-          className={`mx-2 ${!nextPage ? "bg-gray-500" : ""}`}
+          attr={{
+            className: `mx-2 ${!nextPage ? "bg-gray-500" : ""}`,
+            onClick: () => next(),
+          }}
         >
           Next &gt;&gt;
         </AppButton>

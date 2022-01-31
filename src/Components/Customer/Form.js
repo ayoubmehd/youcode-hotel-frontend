@@ -99,7 +99,7 @@ function Form() {
                 name="age"
               />
             </div>
-            <AppButton onClick={(e) => addChild()}>
+            <AppButton attr={{ type: "button", onClick: (e) => addChild() }}>
               <img src={plus} alt="Add new Child" />
             </AppButton>
           </div>
@@ -115,6 +115,7 @@ function Form() {
             >
               <span className="ml-2 mr-1">Age: {item.age}</span>
               <button
+                type="button"
                 onClick={() => removeChild(i)}
                 className="ml-1 mr-2 bg-gray-500 text-white rounded-full p-1 w-6 h-6 leading-3"
               >

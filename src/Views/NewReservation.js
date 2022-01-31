@@ -7,7 +7,7 @@ function NewReservation() {
     <>
       <AppForm />
       <div className="p-2 w-full">
-        <AppButton to="/reservations/new/customers" type="link">
+        <AppButton attr={{ to: "/reservations/new/customers" }} type="link">
           Next
         </AppButton>
       </div>
