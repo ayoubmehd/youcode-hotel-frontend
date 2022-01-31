@@ -1,25 +1,16 @@
-import { Routes, Route, Link } from "react-router-dom";
 import Sidebar from "./Components/Sidebar";
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
-import routes from "./routes";
+import Routes from "./routes";
 
 function App() {
   return (
     <div className="">
-      <header className="App-header">
-
-      </header>
+      <header className="App-header"></header>
       <div className="flex">
         <Sidebar />
-        <main className="flex w-full">
-          <Routes>
-            {
-              routes
-                .map(({ path, element }) => <Route path={path} element={element} key={path} />)
-            }
-          </Routes>
+        <main className="flex w-full p-8">
+          <Routes />
         </main>
       </div>
     </div>
