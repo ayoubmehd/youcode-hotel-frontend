@@ -1,28 +1,28 @@
-import { Routes, Route, Link } from "react-router-dom";
-import Sidebar from "./Components/Sidebar";
-import logo from './logo.svg';
+import { Routes, Route} from "react-router-dom";
+import Login from "./Views/Login";
 import './App.css';
+
+import AppLayout from "./Components/AppLayout";
 
 import routes from "./routes";
 
-function App() {
-  return (
-    <div className="">
-      <header className="App-header">
 
-      </header>
-      <div className="flex">
-        <Sidebar />
-        <main className="flex w-full">
-          <Routes>
+function App() {
+
+
+  return (
+    <>
+      <Routes>
+         <Route path="/login" element={<Login />} />
+         <Route path="/" element={<AppLayout />}>
             {
               routes
-                .map(({ path, element }) => <Route path={path} element={element} key={path} />)
+                .map(({ path, element }) => <Route path={path} element={element} key={path} />) // nested routes
             }
-          </Routes>
-        </main>
-      </div>
-    </div>
+
+         </Route>
+      </Routes>
+    </>
   );
 }
 

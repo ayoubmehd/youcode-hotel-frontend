@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 import user from "../assets/icons/user.svg";
 import logout from "../assets/icons/logout.svg";
 
+
+
+
 function Sidebar() {
     return (
+        <>
         <div className="flex md:flex-col justify-between items-center w-full md:w-28 py-6 h-15 md:h-screen bg-purple-600 text-center text-white bottom-0 absolute md:static">
             <div className="md:w-full mx-1 md:mx-0 flex md:flex-col items-center">
                 <img className="md:w-1/2" src={user} alt="User icon" />
@@ -33,6 +37,11 @@ function Sidebar() {
                 </li>
             </ul>
         </div>
+
+      
+        
+          </>
+
     );
 }
 
