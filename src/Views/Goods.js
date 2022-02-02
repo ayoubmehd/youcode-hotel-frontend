@@ -29,16 +29,10 @@ function Goods() {
                     </span>
                 </AppButton>
             </div>
-            <div class="flex flex-wrap -mx-4">
-                {/* <Good/>
-                <Good/>
-                <Good/>
-                <Good/> */}
-
-                
+            <div class="flex flex-wrap -mx-4">                
                 {
-                APIData?.data?.map((good, index) =>
-                <Good  />
+                APIData.data?.map((good, index) =>
+                <Good key={good._id}  data = {good}/>
                  )
                 }
 
